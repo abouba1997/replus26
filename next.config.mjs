@@ -1,6 +1,9 @@
-const onVercel = process.env.VERCEL === '1'
-const bodyLimit = onVercel ? '4.5mb' : '32mb'
-const uploadMb = process.env.NEXT_PUBLIC_MAX_UPLOAD_MB || process.env.MAX_UPLOAD_MB || (onVercel ? '1' : '8')
+const uploadMb = String(
+  Math.min(
+    Number(process.env.NEXT_PUBLIC_MAX_UPLOAD_MB || process.env.MAX_UPLOAD_MB || 10) || 10,
+    10,
+  ),
+)
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -13,12 +16,6 @@ const nextConfig = {
   agentRules: false,
   poweredByHeader: false,
   serverExternalPackages: ['pg', 'pg-native'],
-  experimental: {
-    serverActions: {
-      bodySizeLimit: bodyLimit,
-    },
-    proxyClientMaxBodySize: bodyLimit,
-  },
 }
 
 export default nextConfig

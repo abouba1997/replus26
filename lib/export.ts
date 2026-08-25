@@ -136,11 +136,11 @@ export function csvResponse(body: string, filename: string) {
   })
 }
 
-export function pdfResponse(body: Buffer, filename: string) {
+export function pdfResponse(body: Buffer, filename: string, inline = false) {
   return new NextResponse(new Uint8Array(body), {
     headers: {
       'Content-Type': 'application/pdf',
-      'Content-Disposition': `attachment; filename="${filename}"`,
+      'Content-Disposition': `${inline ? 'inline' : 'attachment'}; filename="${filename}"`,
     },
   })
 }

@@ -81,6 +81,9 @@ const EXTRA_COLUMNS: Array<[string, string]> = [
   ['nina_data', 'BYTEA'],
   ['docs_encrypted', 'BOOLEAN NOT NULL DEFAULT TRUE'],
   ['notes', 'TEXT'],
+  ['passport_blob', 'TEXT'],
+  ['bank_blob', 'TEXT'],
+  ['nina_blob', 'TEXT'],
 ]
 
 let initialized = false

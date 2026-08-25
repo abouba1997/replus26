@@ -54,16 +54,22 @@ export function isVercel() {
   return process.env.VERCEL === '1'
 }
 
-/**
- * Vercel Functions cap request bodies at 4.5 MB. Three attachments plus
- * form fields must stay under that, so production defaults to 1 MB per file.
- */
+/** Per-file cap. Files go to EdgeStore, not through the Vercel request body. */
+export const UPLOAD_LIMIT_MB = 10
+
 export function maxUploadMb() {
   const raw = process.env.MAX_UPLOAD_MB || process.env.NEXT_PUBLIC_MAX_UPLOAD_MB
-  if (raw) return Number(raw)
-  return isVercel() ? 1 : 8
+  const parsed = raw ? Number(raw) : NaN
+  const value = Number.isFinite(parsed) && parsed > 0 ? parsed : UPLOAD_LIMIT_MB
+  return Math.min(value, UPLOAD_LIMIT_MB)
 }
 
 export function maxUploadBytes() {
-  return maxUploadMb() * 1024 * 1024
+  return Math.round(maxUploadMb() * 1024 * 1024)
+}
+
+export function maxUploadLabel(locale: 'fr' | 'en') {
+  const n = maxUploadMb()
+  const text = Number.isInteger(n) ? String(n) : n.toFixed(1)
+  return locale === 'fr' ? text.replace('.', ',') : text
 }

@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Sora, Source_Sans_3 } from 'next/font/google'
+import { AppProviders } from '@/components/app-providers'
 import { siteUrl } from '@/lib/env'
 import './globals.css'
 
@@ -46,8 +47,10 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${display.variable} ${body.variable}`}>
       <body className="antialiased">
-        {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        <AppProviders>
+          {children}
+          {process.env.NODE_ENV === 'production' && <Analytics />}
+        </AppProviders>
       </body>
     </html>
   )

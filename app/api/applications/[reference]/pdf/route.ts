@@ -22,5 +22,5 @@ export async function GET(
   ])
   if (!rows[0]) return NextResponse.json({ error: 'Introuvable' }, { status: 404 })
   const pdf = await dossierPdf(rows[0])
-  return pdfResponse(pdf, `${reference}.pdf`)
+  return pdfResponse(pdf, `${reference}.pdf`, true)
 }
