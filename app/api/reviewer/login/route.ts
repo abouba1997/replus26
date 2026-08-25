@@ -1,11 +1,27 @@
 import { NextResponse } from 'next/server'
-import { auth, checkReviewerCredentials, reviewerCookie, signValue } from '@/lib/auth'
+import {
+  auth,
+  checkReviewerCredentials,
+  reviewerAuthConfigured,
+  reviewerCookie,
+  signValue,
+} from '@/lib/auth'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 export const maxDuration = 30
 
 export async function POST(request: Request) {
+  if (!reviewerAuthConfigured()) {
+    console.error('Reviewer login missing REVIEWER_PASSWORD or AUTH_SECRET / BETTER_AUTH_SECRET')
+    return NextResponse.json(
+      {
+        error:
+          'Espace équipe non configuré. Ajoutez REVIEWER_PASSWORD et AUTH_SECRET (ou BETTER_AUTH_SECRET) sur Vercel, puis redéployez.',
+      },
+      { status: 503 },
+    )
+  }
   const body = await request.json().catch(() => ({}))
   const email = String(body.email ?? '')
   const password = String(body.password ?? '')
@@ -20,7 +36,7 @@ export async function POST(request: Request) {
         body: { email, password },
         asResponse: true,
       }) as Promise<Response>,
-      new Promise<never>((_, reject) => setTimeout(() => reject(new Error('auth-timeout')), 400)),
+      new Promise<never>((_, reject) => setTimeout(() => reject(new Error('auth-timeout')), 8_000)),
     ])
     if (result.ok) return result
   } catch {

@@ -49,17 +49,31 @@ export function verifyValue(token: string | undefined) {
   }
 }
 
-export function checkReviewerCredentials(email: string, password: string) {
-  const allowed = [
+function reviewerEmails() {
+  return [
     process.env.REVIEWER_EMAIL,
+    process.env.CONTACT_EMAIL,
+    'replusevent@amchammali.org',
     'embassy@amchammali.org',
     'amcham@amchammali.org',
   ]
     .filter(Boolean)
     .map((item) => item!.trim().toLowerCase())
-  const expectedPassword = process.env.REVIEWER_PASSWORD || ''
+}
+
+export function reviewerAuthConfigured() {
+  return Boolean(process.env.REVIEWER_PASSWORD?.trim() && authSecret())
+}
+
+export function checkReviewerCredentials(email: string, password: string) {
+  const expectedPassword = process.env.REVIEWER_PASSWORD?.trim() || ''
   if (!expectedPassword) return false
-  return allowed.includes(email.trim().toLowerCase()) && password === expectedPassword
+  const given = password.trim()
+  const left = Buffer.from(given)
+  const right = Buffer.from(expectedPassword)
+  const passwordOk =
+    left.length === right.length && timingSafeEqual(left, right)
+  return reviewerEmails().includes(email.trim().toLowerCase()) && passwordOk
 }
 
 export async function isReviewerAuthenticated() {

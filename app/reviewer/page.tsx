@@ -161,7 +161,7 @@ export default function ReviewerPage() {
   const studyRef = useRef<HTMLElement>(null)
 
   const load = async () => {
-    const response = await fetch('/api/applications')
+    const response = await fetch('/api/applications', { credentials: 'include' })
     if (response.status === 401) {
       setAuthed(false)
       return
@@ -259,12 +259,16 @@ export default function ReviewerPage() {
     try {
       const response = await fetch('/api/reviewer/login', {
         method: 'POST',
+        credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       })
       if (!response.ok) {
+        const body = await response.json().catch(() => null)
         setLoginError(
-          'Email ou mot de passe incorrect. Utilisez les identifiants transmis par la coordination.',
+          typeof body?.error === 'string'
+            ? body.error
+            : 'Email ou mot de passe incorrect. Utilisez les identifiants transmis par la coordination.',
         )
         return
       }
