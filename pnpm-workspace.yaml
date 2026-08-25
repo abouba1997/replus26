@@ -1,4 +1,4 @@
 overrides:
   hono: "4.12.25"
-ignoredBuiltDependencies:
-  - msw
+allowBuilds:
+  msw: false
