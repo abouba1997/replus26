@@ -1,0 +1,291 @@
+.reviewer {
+  min-height: 100vh;
+  background: var(--paper);
+  padding: 3rem clamp(1.25rem, 8vw, 8rem);
+  color: var(--ink);
+}
+.reviewer-head {
+  background: var(--ink);
+  color: #fff;
+  padding: 3rem;
+  display: flex;
+  justify-content: space-between;
+}
+.reviewer-head h1 {
+  font-size: clamp(3rem, 7vw, 6rem);
+  margin: 0.7rem 0 1rem;
+}
+.reviewer-head p {
+  color: #aab9bc;
+  max-width: 480px;
+  line-height: 1.6;
+}
+.reviewer-head svg {
+  color: var(--lime);
+}
+.reviewer-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 0;
+}
+.search {
+  background: #fff;
+  border: 1px solid #d9e0d8;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.7rem 1rem;
+  flex: 1;
+}
+.search input {
+  border: 0;
+  outline: 0;
+  width: 100%;
+  background: transparent;
+}
+.reviewer-toolbar select {
+  padding: 0.75rem;
+  background: #fff;
+  border: 1px solid #d9e0d8;
+}
+.review-stats {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.review-stats div {
+  background: #fff;
+  padding: 1.2rem 1.5rem;
+  min-width: 150px;
+  border: 1px solid #e0e6df;
+}
+.review-stats span {
+  display: block;
+  font-size: 0.7rem;
+  color: #718187;
+  text-transform: uppercase;
+}
+.review-stats strong {
+  display: block;
+  font-size: 2rem;
+  margin-top: 0.5rem;
+}
+.applicants {
+  background: #fff;
+  border: 1px solid #dce2db;
+}
+.table-head,
+.applicant-row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 0.8fr;
+  gap: 1rem;
+  padding: 1.2rem 1.5rem;
+  align-items: center;
+}
+.table-head {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: #728087;
+  border-bottom: 1px solid #e2e7e1;
+}
+.applicant-row {
+  border-bottom: 1px solid #edf0eb;
+  font-size: 0.8rem;
+}
+.applicant-row strong,
+.applicant-row small {
+  display: block;
+}
+.applicant-row small {
+  color: #718187;
+  margin-top: 0.3rem;
+}
+.applicant-row code {
+  font-size: 0.7rem;
+}
+.status {
+  font-size: 0.68rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 999px;
+  background: #eef1eb;
+  display: inline-block;
+  text-transform: capitalize;
+}
+.status.accepted {
+  background: var(--lime);
+}
+.empty {
+  padding: 3rem;
+  text-align: center;
+  color: #718187;
+}
+@media (max-width: 700px) {
+  .reviewer {
+    padding: 1rem;
+  }
+  .reviewer-head {
+    padding: 2rem 1.3rem;
+  }
+  .reviewer-head svg {
+    display: none;
+  }
+  .reviewer-toolbar {
+    flex-wrap: wrap;
+  }
+  .search {
+    flex-basis: 100%;
+  }
+  .review-stats {
+    overflow: auto;
+  }
+  .review-stats div {
+    min-width: 130px;
+  }
+  .table-head {
+    display: none;
+  }
+  .applicant-row {
+    grid-template-columns: 1fr 0.7fr;
+    gap: 0.8rem;
+  }
+  .applicant-row > span:first-of-type {
+    grid-column: 1/-1;
+  }
+  .applicant-row code {
+    grid-column: 1;
+  }
+  .applicant-row .status {
+    justify-self: end;
+  }
+}
+
+.reviewer-login {
+  max-width: 420px;
+  margin: 4rem auto;
+  background: #fff;
+  padding: 2.5rem;
+  border: 1px solid #dce2db;
+  display: grid;
+  gap: 1rem;
+}
+.reviewer-login h1 {
+  font-size: 2.6rem;
+  letter-spacing: -0.06em;
+}
+.reviewer-login label {
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+.reviewer-login input,
+.dossier select {
+  border: 1px solid #d6ded8;
+  padding: 0.85rem;
+  background: #fbfcf9;
+}
+.reviewer-head-actions {
+  display: grid;
+  justify-items: end;
+  gap: 1rem;
+}
+button.applicant-row {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #edf0eb;
+  text-align: left;
+  cursor: pointer;
+}
+button.applicant-row:hover {
+  background: #f7f9f4;
+}
+.dossier {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(520px, 100%);
+  height: 100vh;
+  overflow: auto;
+  background: #fff;
+  border-left: 1px solid #dce2db;
+  padding: 2rem;
+  z-index: 30;
+  box-shadow: -20px 0 50px rgba(7, 21, 35, 0.12);
+}
+.dossier header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.dossier h2 {
+  font-size: 1.8rem;
+  letter-spacing: -0.04em;
+  margin: 0.4rem 0;
+}
+.dossier dl {
+  display: grid;
+  gap: 1rem;
+}
+.dossier dt {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: #718187;
+}
+.dossier dd {
+  margin: 0.3rem 0 0;
+  line-height: 1.5;
+}
+.dossier-files {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.5rem 0;
+}
+.dossier-files a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid #d6ded8;
+  padding: 0.55rem 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.status.declined {
+  background: #f3d8ce;
+}
+.status.under_review {
+  background: #e7eef5;
+}
+.reviewer-tabs {
+  display: flex;
+  gap: 0.6rem;
+  padding: 1.5rem 0 0;
+}
+.reviewer-tabs button {
+  border: 0;
+  background: #eef1eb;
+  padding: 0.55rem 1rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+.reviewer-tabs button.active {
+  background: var(--lime);
+}
+.dossier textarea {
+  width: 100%;
+  min-height: 90px;
+  margin-top: 0.4rem;
+  border: 1px solid #d6ded8;
+  padding: 0.75rem;
+  background: #fbfcf9;
+}
+.dossier label {
+  display: grid;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+}

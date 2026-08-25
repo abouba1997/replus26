@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <circle cx="100" cy="100" r="100" fill="#071523"/>
+  <circle cx="100" cy="100" r="78" stroke="#C8F04A" stroke-width="3"/>
+  <g transform="translate(100 100)">
+    <polygon points="0,-76 5.4,-38 -5.4,-38" fill="#C8F04A"/>
+    <polygon points="0,-76 5.4,-38 -5.4,-38" fill="#C8F04A" transform="rotate(45)"/>
+    <polygon points="0,-76 5.4,-38 -5.4,-38" fill="#C8F04A" transform="rotate(90)"/>
+    <polygon points="0,-76 5.4,-38 -5.4,-38" fill="#C8F04A" transform="rotate(135)"/>
+    <polygon points="0,-76 5.4,-38 -5.4,-38" fill="#C8F04A" transform="rotate(180)"/>
+    <polygon points="0,-76 5.4,-38 -5.4,-38" fill="#C8F04A" transform="rotate(225)"/>
+    <polygon points="0,-76 5.4,-38 -5.4,-38" fill="#C8F04A" transform="rotate(270)"/>
+    <polygon points="0,-76 5.4,-38 -5.4,-38" fill="#C8F04A" transform="rotate(315)"/>
+    <polygon points="0,-58 7.2,-36 -7.2,-36" fill="#E8922A" transform="rotate(22.5)"/>
+    <polygon points="0,-58 7.2,-36 -7.2,-36" fill="#E8922A" transform="rotate(67.5)"/>
+    <polygon points="0,-58 7.2,-36 -7.2,-36" fill="#E8922A" transform="rotate(112.5)"/>
+    <polygon points="0,-58 7.2,-36 -7.2,-36" fill="#E8922A" transform="rotate(157.5)"/>
+    <polygon points="0,-58 7.2,-36 -7.2,-36" fill="#E8922A" transform="rotate(202.5)"/>
+    <polygon points="0,-58 7.2,-36 -7.2,-36" fill="#E8922A" transform="rotate(247.5)"/>
+    <polygon points="0,-58 7.2,-36 -7.2,-36" fill="#E8922A" transform="rotate(292.5)"/>
+    <polygon points="0,-58 7.2,-36 -7.2,-36" fill="#E8922A" transform="rotate(337.5)"/>
+  </g>
+  <circle cx="100" cy="100" r="32" fill="#F4B942"/>
+  <rect x="90" y="74" width="20" height="52" rx="4" fill="#fff"/>
+  <rect x="74" y="90" width="52" height="20" rx="4" fill="#fff"/>
+  <circle cx="154" cy="58" r="5.5" fill="#C8F04A"/>
+</svg>
